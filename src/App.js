@@ -2,19 +2,20 @@ import "./styles.css";
 import React from "react";
 
 const App = () => {
-
-  const greeting = "Hello"
-
-
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <p>{greeting}</p>
+      <div>
+        <h1>Zesty</h1>
+        <h2>
+          A photography project
+          <br /> by Ella Fieldling
+        </h2>
+      </div>
+      <div className="image-container">
+        <img alt="" src="" />
+      </div>
     </div>
   );
+};
 
-}
-
-
-export default App
+export default App;
