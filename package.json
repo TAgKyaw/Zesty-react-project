@@ -1,7 +1,7 @@
 {
-  "name": "zesty-photo-app",
+  "name": "react-project-practice",
   "version": "1.0.0",
-  "description": "React mini project",
+  "description": "",
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
