@@ -10,15 +10,14 @@ import apple from "./assets/image6.jpeg";
 const images = [cabbage, mango, avocado, tomato, peach, apple];
 
 const App = () => {
-  const [currentImageIndex, setCurrentImage] = useState(200);
-  console.log(currentImageIndex);
+  const [currentImageIndex, setCurrentImage] = useState(0);
+  const length = images.length - 1;
 
-  const handelClick = () => {
-    alert("Hello World!");
-  };
-
-  const handleChange = (event) => {
-    console.log(event.target.value);
+  const handleClick = () => {
+    setCurrentImage((currentImageIndex) => {
+      //ternary statment -> condition ? do if true : do if false;
+      return currentImageIndex < length ? currentImageIndex + 1 : 0;
+    });
   };
 
   return (
@@ -29,16 +28,9 @@ const App = () => {
           A photography project
           <br /> by Ella Fieldling
         </h2>
-        <button onClick={handelClick}> Click Here </button>
-        <input
-          type="text"
-          name="example"
-          autoComplete="off"
-          onChange={handleChange}
-        />
       </div>
       <div className="image-container">
-        <img alt="" src={images[2]} />
+        <img alt="" src={images[currentImageIndex]} onClick={handleClick} />
       </div>
     </div>
   );
