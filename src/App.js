@@ -21,18 +21,21 @@ const App = () => {
   };
 
   return (
-    <div className="App">
-      <div>
+    <section>
+      <header>
         <h1>Zesty</h1>
         <h2>
           A photography project
           <br /> by Ella Fieldling
         </h2>
-      </div>
-      <div className="image-container">
+      </header>
+      <figure>
+        <figcaption>
+          {currentImageIndex + 1} / {images.length}{" "}
+        </figcaption>
         <img alt="" src={images[currentImageIndex]} onClick={handleClick} />
-      </div>
-    </div>
+      </figure>
+    </section>
   );
 };
 
