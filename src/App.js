@@ -9,23 +9,28 @@ import apple from "./assets/image6.jpeg";
 
 const images = [cabbage, mango, avocado, tomato, peach, apple];
 
-const Loading = () => (
+const Loading = ({ calculatedWidth }) => (
   <aside>
     <div className="loading-bar">
-      <label>Loading all your favorite images...</label>
-      <progress></progress>
+      <label htmlFor="images-loaded">Loading all your favorite images...</label>
+      <progress id="images-loaded" max="100" value={calculatedWidth}></progress>
     </div>
   </aside>
 );
 const App = () => {
   const [currentImageIndex, setCurrentImage] = useState(0);
-  const length = images.length - 1;
+  const [numLoaded, setNumLoaded] = useState(0);
 
   const handleClick = () => {
+    const length = images.length - 1;
     setCurrentImage((currentImageIndex) => {
       //ternary statment -> condition ? do if true : do if false;
       return currentImageIndex < length ? currentImageIndex + 1 : 0;
     });
+  };
+
+  const handleImageLoad = () => {
+    setNumLoaded((numLoaded) => numLoaded + 1);
   };
 
   return (
@@ -38,10 +43,23 @@ const App = () => {
         </h2>
       </header>
       <figure>
+        {numLoaded < images.length && (
+          <Loading calculatedWidth={(numLoaded / images.length) * 100} />
+        )}
         <figcaption>
           {currentImageIndex + 1} / {images.length}{" "}
         </figcaption>
-        <img alt="" src={images[currentImageIndex]} onClick={handleClick} />
+        {images.map((imageURL, index) => (
+          <img
+            alt=""
+            key={imageURL}
+            src={imageURL}
+            onClick={handleClick}
+            onLoad={handleImageLoad}
+            // style={{ opacity: currentImageIndex === index ? 1 : 0 }}
+            className={currentImageIndex === index ? "display" : "hide"}
+          />
+        ))}
       </figure>
     </section>
   );
