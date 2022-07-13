@@ -9,6 +9,14 @@ import apple from "./assets/image6.jpeg";
 
 const images = [cabbage, mango, avocado, tomato, peach, apple];
 
+const Loading = () => (
+  <aside>
+    <div className="loading-bar">
+      <label>Loading all your favorite images...</label>
+      <progress></progress>
+    </div>
+  </aside>
+);
 const App = () => {
   const [currentImageIndex, setCurrentImage] = useState(0);
   const length = images.length - 1;
